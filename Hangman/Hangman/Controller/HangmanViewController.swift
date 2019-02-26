@@ -10,19 +10,23 @@ import UIKit
 
 class HangmanViewController: UIViewController {
 
+    let hangman = HangMan()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
 
     @IBAction func keyClick(_ sender: UIButton) {
-        var letterPressed = sender.text
-        if HangMan.isInSecretWord(letterPressed) {
-            label.text = HangMan.update(letterPressed)
+        var letterPressed = sender.title(for: .normal)
+        if hangman.isInSecretWord(guess letterPressed) {
+            label.text = hangman.update(letterPressed)
         }
         else {
-            HangMan.guessesRemaining -= 1;
+            hangman.guessesRemaining -= 1;
             
         }
     }

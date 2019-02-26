@@ -25,7 +25,6 @@ class HangMan {
     }
     
     func isInSecretWord(guess g: String) -> Bool {
-        guessedLetters.append(g)
         let charset = CharacterSet(charactersIn: self.secretWord)
         if self.secretWord.rangeOfCharacter(from: charset) != nil {
             return true;
