@@ -10,21 +10,39 @@ import Foundation
 
 class HangMan {
     let secretWord: String;
+    var secretWordArray: Array<String?>;
+    var guessedLetters: Array<String?>;
+    var guessesRemaining: Int
+    var incorrectGuesses = Set<String>()
     
     let wordBank = ["awkward", "bagpipes", "banjo", "bungler", "croquet", "crypt", "dwarves", "fervid", "fishhook", "fjord", "gazebo", "gypsy", "haiku", "haphazard", "hyphen", "ivory", "jazzy", "jiffy", "jinx", "jukebox", "kayak", "kiosk", "klutz", "memento", "mystify", "numbskull", "ostracize", "oxygen", "pajama", "phlegm", "pixel", "polka", "quad",  "quip" ,"rhythmic" ,"rogue" ,"sphinx","squawk" ,"swivel" ,"toady" ,"twelfth" ,"unzip" ,"waxy" ,"wildebeest" ,"yacht" ,"zealous" ,"zigzag" ,"zippy", "zombie"]
+    
+    let alphabet = ["a", "b" , "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
     init() {
         let randnum: Int = Int.random(in: 0..<wordBank.count)
         self.secretWord = wordBank[randnum]
+        self.secretWordArray = Array(repeating: nil, count: secretWord.count )
+        self.guessedLetters = Array(repeating: nil, count: 26)
+        self.guessesRemaining = 5
+        self.incorrectGuesses = Set<String>()
     }
     
-    func isInSecretWord(guess g:String) => Boolean {
+    func isInSecretWord(guess g: String) -> Bool {
+        guessedLetters.append(g)
         let charset = CharacterSet(charactersIn: self.secretWord)
-        if str.rangeOfCharacter(from: charset) != nil {
+        if self.secretWord.rangeOfCharacter(from: charset) != nil {
             return true;
         }
-    return false:
+        return false;
     }
+    
+    func update() {
+        if isInSecretWord(guess g) {
+            secretWordArray[i] = g
+        } else {
+            drawHangman();
+        }
     
     
     
