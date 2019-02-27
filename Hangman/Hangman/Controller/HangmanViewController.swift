@@ -26,14 +26,14 @@ class HangmanViewController: UIViewController {
 
     @IBAction func keyClick(_ sender: UIButton) {
         var letterPressed = sender.title(for: .normal)
-        if hangman.isInSecretWord(letterPressed) {
+        if hangman.isInSecretWord((letterPressed ?? nil)) {
             MyLabel.text = hangman.update(letterPressed)
         }
         else {
             hangman.badGuesses += 1;
+            checkLose()
         }
     }
-
 
     
     func changeImage() {
