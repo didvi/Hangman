@@ -14,12 +14,12 @@ class HangmanViewController: UIViewController {
     var hangmanImage = UIImage(named: "hangman1")
     
     
-    @IBOutlet weak var MyLabel: UILabel!
-    
+    @IBOutlet var MyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MyLabel.text = String(hangman.displayArray)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,35 +28,45 @@ class HangmanViewController: UIViewController {
         let letterPressed = (sender.title(for: .normal))!
         if hangman.isInSecretWord(letterPressed){
             MyLabel.text = hangman.update(letterPressed.prefix(0))
+            checkWin()
         }
         else {
             hangman.badGuesses += 1;
+            hangmanImage = UIImage(named: "hangman1")
             checkLose()
         }
     }
 
-    
     func changeImage() {
-        if hangman.badGuesses == 0 {
+        switch hangman.badGuesses {
+        case 0:
+            hangmanImage = UIImage(named: "hangman1")
+        case 1:
+            hangmanImage = UIImage(named: "hangman2")
+        case 2:
+            hangmanImage = UIImage(named: "hangman3")
+        case 3:
+            hangmanImage = UIImage(named: "hangman4")
+        case 4:
+            hangmanImage = UIImage(named: "hangman5")
+        case 5:
+            hangmanImage = UIImage(named: "hangman6")
+        case 6:
+            hangmanImage = UIImage(named: "hangman7")
+        default:
             hangmanImage = UIImage(named: "hangman1")
         }
-        if hangman.badGuesses == 1 {
-            hangmanImage = UIImage(named: "hangman2")
+    }
+    
+    func checkLose() {
+        if hangman.badGuesses == 0 {
+            performSegue(withIdentifier: "toLose", sender: nil)
         }
-        if hangman.badGuesses == 2 {
-            hangmanImage = UIImage(named: "hangman3")
-        }
-        if hangman.badGuesses == 3 {
-            hangmanImage = UIImage(named: "hangman4")
-        }
-        if hangman.badGuesses == 4 {
-            hangmanImage = UIImage(named: "hangman5")
-        }
-        if hangman.badGuesses == 5 {
-            hangmanImage = UIImage(named: "hangman6")
-        }
-        if hangman.badGuesses == 6 {
-            hangmanImage = UIImage(named: "hangman7")
+    }
+    
+    func checkWin() {
+        if hangman.secretWordArray == hangman.displayArray {
+            performSegue(withIdentifier: "toWin", sender: nil)
         }
     }
 }
