@@ -25,9 +25,9 @@ class HangmanViewController: UIViewController {
 
 
     @IBAction func keyClick(_ sender: UIButton) {
-        var letterPressed = sender.title(for: .normal)
-        if hangman.isInSecretWord(letterPressed) {
-            MyLabel.text = hangman.update(letterPressed)
+        let letterPressed = (sender.title(for: .normal))!
+        if hangman.isInSecretWord(letterPressed){
+            MyLabel.text = hangman.update(letterPressed.prefix(0))
         }
         else {
             hangman.badGuesses += 1;
