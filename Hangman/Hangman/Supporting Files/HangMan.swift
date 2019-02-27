@@ -35,16 +35,14 @@ class HangMan {
         return false;
     }
     
-    // outputs a new word array to render to the screen
-    func update(_ g: Character) {
-        
+    // outputs a new string to render to the screen with g filled in
+    func update(_ g: Character) -> String {
         for i in 0..<secretWordArray.count {
             if secretWordArray[i] == g {
                 displayArray[i] = g
             }
         }
-        
-        
+    return String(secretWordArray)
     }
     
     

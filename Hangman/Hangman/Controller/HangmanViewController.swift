@@ -31,9 +31,9 @@ class HangmanViewController: UIViewController {
         }
         else {
             hangman.badGuesses += 1;
+            checkLose()
         }
     }
-
 
     
     func changeImage() {
