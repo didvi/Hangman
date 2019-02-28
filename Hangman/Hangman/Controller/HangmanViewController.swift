@@ -15,11 +15,12 @@ class HangmanViewController: UIViewController {
     var hangmanImage = UIImage(named: "hangman1")
     
     
-    @IBOutlet var MyLabel: UILabel!
+    @IBOutlet var wordDisplay: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.wordDisplay.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -27,13 +28,13 @@ class HangmanViewController: UIViewController {
     @IBAction func startGame(_ sender: Any) {
         hangman = HangMan()
         performSegue(withIdentifier: "toGame", sender: nil)
-        MyLabel.text = String(hangman.displayArray)
+       // self.wordDisplay.text = String(hangman.displayArray)
     }
     
     @IBAction func keyClick(_ sender: UIButton) {
         let letterPressed = (sender.title(for: .normal))!
         if hangman.isInSecretWord(letterPressed){
-            MyLabel.text = hangman.update(Character(letterPressed))
+            self.wordDisplay.text = hangman.update(Character(letterPressed))
             checkWin()
         }
         else {
