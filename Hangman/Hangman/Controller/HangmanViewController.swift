@@ -11,7 +11,7 @@ import UIKit
 
 class HangmanViewController: UIViewController {
 
-    let hangman = HangMan()
+    var hangman = HangMan()
     var hangmanImage = UIImage(named: "hangman1")
     
     
@@ -20,15 +20,20 @@ class HangmanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MyLabel.text = String(hangman.displayArray)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
 
+    @IBAction func startGame(_ sender: Any) {
+        hangman = HangMan()
+        performSegue(withIdentifier: "toGame", sender: nil)
+        MyLabel.text = String(hangman.displayArray)
+    }
+    
     @IBAction func keyClick(_ sender: UIButton) {
         let letterPressed = (sender.title(for: .normal))!
         if hangman.isInSecretWord(letterPressed){
-            MyLabel.text = hangman.update(letterPressed.prefix(0))
+            MyLabel.text = hangman.update(Character(letterPressed))
             checkWin()
         }
         else {
