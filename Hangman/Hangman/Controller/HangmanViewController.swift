@@ -12,7 +12,7 @@ import UIKit
 class HangmanViewController: UIViewController {
 
     var hangman = HangMan()
-    var hangmanImage = UIImage(named: "hangman1")
+    @IBOutlet weak var hangmanGraphics: UIImageView!
     
     
     @IBOutlet var wordDisplay: UILabel!
@@ -28,6 +28,7 @@ class HangmanViewController: UIViewController {
     @IBAction func startGame(_ sender: Any) {
         hangman = HangMan()
         performSegue(withIdentifier: "toGame", sender: nil)
+        hangmanGraphics.image = UIImage(named: "hangman1")
        // self.wordDisplay.text = String(hangman.displayArray)
     }
     
@@ -39,7 +40,7 @@ class HangmanViewController: UIViewController {
         }
         else {
             hangman.badGuesses += 1;
-            hangmanImage = UIImage(named: "hangman1")
+            changeImage()
             checkLose()
         }
     }
@@ -47,21 +48,21 @@ class HangmanViewController: UIViewController {
     func changeImage() {
         switch hangman.badGuesses {
         case 0:
-            hangmanImage = UIImage(named: "hangman1")
+            hangmanGraphics.image = UIImage(named: "hangman1")
         case 1:
-            hangmanImage = UIImage(named: "hangman2")
+            hangmanGraphics.image = UIImage(named: "hangman2")
         case 2:
-            hangmanImage = UIImage(named: "hangman3")
+            hangmanGraphics.image = UIImage(named: "hangman3")
         case 3:
-            hangmanImage = UIImage(named: "hangman4")
+            hangmanGraphics.image = UIImage(named: "hangman4")
         case 4:
-            hangmanImage = UIImage(named: "hangman5")
+            hangmanGraphics.image = UIImage(named: "hangman5")
         case 5:
-            hangmanImage = UIImage(named: "hangman6")
+            hangmanGraphics.image = UIImage(named: "hangman6")
         case 6:
-            hangmanImage = UIImage(named: "hangman7")
+            hangmanGraphics.image = UIImage(named: "hangman7")
         default:
-            hangmanImage = UIImage(named: "hangman1")
+            hangmanGraphics.image = UIImage(named: "hangman1")
         }
     }
     
