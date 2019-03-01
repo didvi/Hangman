@@ -13,6 +13,7 @@ class HangMan {
     let secretWordArray: Array<Character>;
     var displayArray: Array<Character>;
     var badGuesses: Int;
+    var gamePhraseArrayCheck = [Bool]()
     
     let wordBank = ["awkward", "bagpipes", "banjo", "bungler", "croquet", "crypt", "dwarves", "fervid", "fishhook", "fjord", "gazebo", "gypsy", "haiku", "haphazard", "hyphen", "ivory", "jazzy", "jiffy", "jinx", "jukebox", "kayak", "kiosk", "klutz", "memento", "mystify", "numbskull", "ostracize", "oxygen", "pajama", "phlegm", "pixel", "polka", "quad",  "quip" ,"rhythmic" ,"rogue" ,"sphinx","squawk" ,"swivel" ,"toady" ,"twelfth" ,"unzip" ,"waxy" ,"wildebeest" ,"yacht" ,"zealous" ,"zigzag" ,"zippy", "zombie"]
     
@@ -24,6 +25,10 @@ class HangMan {
         self.secretWordArray = Array(secretWord)
         self.displayArray = Array(repeating: "_", count: secretWord.count)
         self.badGuesses = 0
+        self.gamePhraseArrayCheck = [Bool]()
+        for _ in 0...secretWord.count {
+            gamePhraseArrayCheck.append(false);
+        }
     }
     
     // doesn't account for capitalization
@@ -38,8 +43,8 @@ class HangMan {
     // outputs a new string to render to the screen with g filled in
     func update(_ g: Character) -> String {
         for i in 0..<secretWordArray.count {
-            if secretWordArray[i] == g {
-                displayArray[i] = g
+            if secretWordArray[i] == "g" {
+                displayArray[i] = "g"
             }
         }
     return String(secretWordArray)

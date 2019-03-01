@@ -31,8 +31,11 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My life is in your hands now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLa-w1-wCb">
-                                <rect key="frame" x="39" y="436" width="294" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My life is in your hands now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLa-w1-wCb">
+                                <rect key="frame" x="42" y="436" width="317" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PLa-w1-wCb" secondAttribute="height" multiplier="49:5" id="aFh-Zm-MXc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.23137254901960785" green="0.37647058823529411" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -65,10 +68,12 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="PLa-w1-wCb" secondAttribute="trailing" constant="-333" id="4dc-YT-Li2"/>
                             <constraint firstItem="PLa-w1-wCb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-342" id="JWs-fe-u8g"/>
+                            <constraint firstItem="PLa-w1-wCb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="QUY-Sd-iBm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="hangmanGraphics" destination="Zg4-R8-afv" id="R03-ZD-zec"/>
                         <outlet property="wordDisplay" destination="2Lu-Zw-JS2" id="06B-4R-2nq"/>
                     </connections>
                 </viewController>
@@ -429,6 +434,7 @@
                         <viewLayoutGuide key="safeArea" id="eYx-ih-OQy"/>
                     </view>
                     <connections>
+                        <outlet property="hangmanGraphics" destination="XLd-B2-0Rp" id="5xU-KR-rLo"/>
                         <outlet property="wordDisplay" destination="qjw-Dl-FJ7" id="nXp-5T-CJe"/>
                         <segue destination="x6a-sJ-wrO" kind="show" identifier="toLose" id="6Qh-Om-yKY"/>
                         <segue destination="7xF-Cs-tsj" kind="show" identifier="toWin" id="cQI-tm-riD"/>
