@@ -16,6 +16,11 @@ class EndGameViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func startGame(_ sender: Any) {
+        performSegue(withIdentifier: "start", sender: nil)
+        // self.wordDisplay.text = String(hangman.displayArray)
+    }
+    
 
     /*
     // MARK: - Navigation
