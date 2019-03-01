@@ -13,7 +13,7 @@
         <!--Start Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Start Screen" customClass="HangmanViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StartScreenController.swift" id="BYZ-38-t0r" userLabel="Start Screen" customClass="StartScreenController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
                                 <size key="titleShadowOffset" width="3" height="3"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
-                                    <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gcF-FA-ow9"/>
+                                    <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Hg-JK-pAQ"/>
                                     <segue destination="v4l-0v-zPR" kind="show" identifier="toGame" id="ga1-aw-Iz9"/>
                                 </connections>
                             </button>
@@ -72,10 +72,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="hangmanGraphics" destination="Zg4-R8-afv" id="R03-ZD-zec"/>
-                        <outlet property="wordDisplay" destination="2Lu-Zw-JS2" id="06B-4R-2nq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

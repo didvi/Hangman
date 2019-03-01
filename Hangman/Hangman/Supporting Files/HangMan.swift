@@ -32,22 +32,18 @@ class HangMan {
     }
     
     // doesn't account for capitalization
-    func isInSecretWord(_ g: String) -> Bool {
-        let charset = CharacterSet(charactersIn: self.secretWord)
-        if self.secretWord.rangeOfCharacter(from: charset) != nil {
-            return true;
-        }
-        return false;
+    func isInSecretWord(_ g: Character) -> Bool {
+        return secretWordArray.contains(g)
     }
     
     // outputs a new string to render to the screen with g filled in
     func update(_ g: Character) -> String {
         for i in 0..<secretWordArray.count {
-            if secretWordArray[i] == "g" {
-                displayArray[i] = "g"
+            if secretWordArray[i] == g {
+                displayArray[i] = g
             }
         }
-    return String(secretWordArray)
+    return String(displayArray)
     }
     
     

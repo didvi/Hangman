@@ -19,8 +19,8 @@ class HangmanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.wordDisplay.text = ""
+        hangmanGraphics.image = UIImage(named: "hangman1")
+        self.wordDisplay.text = String(hangman.displayArray)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,14 +28,16 @@ class HangmanViewController: UIViewController {
     @IBAction func startGame(_ sender: Any) {
         hangman = HangMan()
         performSegue(withIdentifier: "toGame", sender: nil)
-        hangmanGraphics.image = UIImage(named: "hangman1")
+        
        // self.wordDisplay.text = String(hangman.displayArray)
     }
     
     @IBAction func keyClick(_ sender: UIButton) {
-        let letterPressed = (sender.title(for: .normal))!
-        if hangman.isInSecretWord(letterPressed){
-            self.wordDisplay.text = hangman.update(Character(letterPressed))
+        var letterPressed = (sender.title(for: .normal))!
+        letterPressed = letterPressed.lowercased()
+        let charLetterPressed = Character(letterPressed)
+        if hangman.isInSecretWord(charLetterPressed){
+            self.wordDisplay.text = hangman.update(charLetterPressed)
             checkWin()
         }
         else {
@@ -67,7 +69,7 @@ class HangmanViewController: UIViewController {
     }
     
     func checkLose() {
-        if hangman.badGuesses == 0 {
+        if hangman.badGuesses >= 7 {
             performSegue(withIdentifier: "toLose", sender: nil)
         }
     }
